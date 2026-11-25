@@ -14,6 +14,18 @@ class Store:
         self._tables: dict[str, list[dict[str, Any]]] = {
             name: [dict(row) for row in rows] for name, rows in SEED_ROWS.items()
         }
+        # 分区合并产物确认记录：由合并流程逐条登记、持久化，压缩只经此表认领产物。
+        self._tables.setdefault("merge_artifact", [])
+        # 合并运行台账：run_id -> 运行状态与产物清单（合并详情的证据来源）。
+        self.merge_runs: dict[str, dict[str, Any]] = {}
+        # 物理文件仓：文件路径 -> 实际字节与写出状态，模拟湖表目录上的真实文件。
+        self.artifact_files: dict[str, dict[str, Any]] = {}
+
+    def reset_artifacts(self) -> None:
+        """清空合并运行与产物证据，仅供测试回到干净起点。"""
+        self._tables["merge_artifact"] = []
+        self.merge_runs.clear()
+        self.artifact_files.clear()
 
     def module_names(self) -> list[str]:
         return sorted(self._tables)

@@ -200,6 +200,17 @@ export const MODULES: ModuleMeta[] = [
     actionTargets: {"发起审计": "审计中", "确认报告": "已通过"},
     metrics: ["报告总数", "已通过审计", "未通过审计"],
   },
+  {
+    key: "merge_artifact",
+    name: "分区合并产物确认",
+    entity: "产物确认记录",
+    desc: "逐条持久化分区合并生成的实际文件数据、所属运行和确认状态，供表压缩判定可消费范围",
+    fields: ["产物文件", "所属运行", "源分区", "确认状态", "消费状态", "消费次数"],
+    statuses: ["写出中", "已写出", "已确认"],
+    actions: [],
+    actionTargets: {},
+    metrics: ["产物总数", "待确认产物", "已确认产物"],
+  },
 ]
 
 export const MODULE_BY_KEY: Map<string, ModuleMeta> = new Map(

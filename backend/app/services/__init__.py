@@ -21,6 +21,7 @@ from app.services.iceberg_migrate import IcebergMigrateService
 from app.services.table_catalog import TableCatalogService
 from app.services.lake_audit import LakeAuditService
 from app.services.stream_checkpoint import StreamCheckpointService
+from app.services.merge_artifact import MergeArtifactService
 
 SERVICES: dict[str, BaseModuleService] = {
     "stream_source": StreamSourceService(),
@@ -42,6 +43,7 @@ SERVICES: dict[str, BaseModuleService] = {
     "table_catalog": TableCatalogService(),
     "lake_audit": LakeAuditService(),
     "stream_checkpoint": StreamCheckpointService(),
+    "merge_artifact": MergeArtifactService(),
 }
 
 

@@ -68,6 +68,7 @@ npm run dev
 | 格式迁移 | `iceberg_migrate` | 迁移计划 | 计划标识、源格式、目标格式 |
 | 表目录同步 | `table_catalog` | 同步记录 | 记录标识、来源Catalog、目标Catalog |
 | 湖仓审计 | `lake_audit` | 审计报告 | 报告标识、审计范围、审计时间 |
+| 分区合并产物确认 | `merge_artifact` | 产物确认记录 | 产物文件、所属运行、源分区、确认状态、消费状态、消费次数 |
 
 ## 约定
 
